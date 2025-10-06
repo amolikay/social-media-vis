@@ -9,10 +9,11 @@
   "params": [
     {
       "name": "platform_selection",
+      "value": "All",
       "bind": {
         "input": "select",
         "options": [
-          {"label": "All Platforms", "value": null},
+          "All",
           "Facebook",
           "Instagram",
           "TikTok",
@@ -20,7 +21,11 @@
           "YouTube",
           "Snapchat",
           "WeChat",
-          "LinkedIn"
+          "LinkedIn",
+          "WhatsApp",
+          "LINE",
+          "KakaoTalk",
+          "VKontakte"
         ],
         "name": "Filter by Platform: "
       }
@@ -28,7 +33,7 @@
   ],
   "transform": [
     {
-      "filter": "platform_selection == null || datum.Most_Used_Platform == platform_selection"
+      "filter": "platform_selection == 'All' || datum.Most_Used_Platform == platform_selection"
     }
   ],
   "layer": [
@@ -70,18 +75,20 @@
           {
             "field": "Avg_Daily_Usage_Hours",
             "type": "quantitative",
-            "title": "Daily Usage",
+            "title": "Daily Usage (hours)",
             "format": ".1f"
           },
           {
             "field": "Mental_Health_Score",
             "type": "quantitative",
-            "title": "Mental Health Score"
+            "title": "Mental Health Score",
+            "format": ".0f"
           },
           {
             "field": "Addicted_Score",
             "type": "quantitative",
-            "title": "Addiction Score"
+            "title": "Addiction Score",
+            "format": ".0f"
           }
         ]
       }
