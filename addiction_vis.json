@@ -1,0 +1,125 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "title": "Social Media Usage vs. Mental Health Score",
+  "data": {
+    "url": "addiction_data.csv"
+  },
+  "width": "container",
+  "height": 450,
+  "params": [
+    {
+      "name": "platform_selection",
+      "bind": {
+        "input": "select",
+        "options": [
+          null,
+          "Facebook",
+          "Instagram",
+          "TikTok",
+          "Twitter",
+          "YouTube",
+          "Snapchat",
+          "WeChat",
+          "LinkedIn"
+        ],
+        "name": "Filter by Platform: "
+      }
+    }
+  ],
+  "transform": [
+    {
+      "filter": "platform_selection == null || datum.Most_Used_Platform == platform_selection"
+    }
+  ],
+  "layer": [
+    {
+      "mark": {
+        "type": "circle",
+        "opacity": 0.7,
+        "stroke": "black",
+        "strokeWidth": 0.5
+      },
+      "encoding": {
+        "x": {
+          "field": "Avg_Daily_Usage_Hours",
+          "type": "quantitative",
+          "title": "Average Daily Usage (Hours)",
+          "axis": {"grid": false}
+        },
+        "y": {
+          "field": "Mental_Health_Score",
+          "type": "quantitative",
+          "title": "Mental Health Score (1-10)",
+          "scale": {"domain": [0, 10]}
+        },
+        "size": {
+          "field": "Addicted_Score",
+          "type": "quantitative",
+          "title": "Addiction Score (1-10)",
+          "scale": {"range": [50, 2000]}
+        },
+        "color": {
+          "field": "Most_Used_Platform",
+          "type": "nominal",
+          "title": "Most Used Platform"
+        },
+        "tooltip": [
+          {"field": "Gender", "type": "nominal", "title": "Gender"},
+          {"field": "Age", "type": "quantitative", "title": "Age"},
+          {"field": "Country", "type": "nominal", "title": "Country"},
+          {
+            "field": "Avg_Daily_Usage_Hours",
+            "type": "quantitative",
+            "title": "Daily Usage",
+            "format": ".1f"
+          },
+          {
+            "field": "Mental_Health_Score",
+            "type": "quantitative",
+            "title": "Mental Health Score"
+          },
+          {
+            "field": "Addicted_Score",
+            "type": "quantitative",
+            "title": "Addiction Score"
+          }
+        ]
+      }
+    },
+    {
+      "mark": {
+        "type": "rule",
+        "color": "red",
+        "strokeWidth": 2,
+        "strokeDash": [5, 5]
+      },
+      "encoding": {
+        "y": {
+          "aggregate": "mean",
+          "field": "Mental_Health_Score",
+          "type": "quantitative"
+        }
+      }
+    },
+    {
+      "mark": {
+        "type": "text",
+        "align": "left",
+        "baseline": "bottom",
+        "dx": 5,
+        "dy": -5,
+        "color": "red",
+        "fontStyle": "italic"
+      },
+      "encoding": {
+        "text": {"value": "Average Mental Health Score"},
+        "x": {"value": 5},
+        "y": {
+          "aggregate": "mean",
+          "field": "Mental_Health_Score",
+          "type": "quantitative"
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FIT3179 Week 10 Homework</title>
+  
+  <script src="https://cdn.jsdelivr.net/npm/vega@5"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vega-lite@5"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vega-embed@6"></script>
+  
+  <style>
+    body {
+      font-family: sans-serif;
+      line-height: 1.6;
+      background-color: #f4f4f4;
+      color: #333;
+      margin: 0;
+      padding: 20px;
+    }
+    .container {
+      max-width: 900px;
+      margin: auto;
+      background: #fff;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+    h1, h2 {
+      color: #0056b3;
+    }
+    .vis-container {
+      width: 100%;
+      margin-bottom: 40px;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <h1>Data Visualisation Portfolio</h1>
+    <p>This page hosts the visualisations for my FIT3179 homework.</p>
+
+    <hr>
+
+    <h2>Social Media Usage vs. Mental Health</h2>
+    <p>This interactive bubble chart explores the relationship between daily social media usage, mental health scores, and self-reported addiction levels. Use the dropdown menu to filter by platform.</p>
+    <div id="addiction_vis_div" class="vis-container"></div>
+    
+    <hr>
+    
+    <h2>Placeholder for Week 9 Visualisation (Map)</h2>
+    <p>This section is reserved for the map visualisation created in the Week 9 homework.</p>
+    </div>
+
+
+  <script type="text/javascript">
+    // Embed the first visualisation
+    var spec1 = "addiction_vis.json";
+    vegaEmbed('#addiction_vis_div', spec1, {"actions": false}).catch(console.error);
+    
+    // To embed your second visualisation, uncomment the lines below
+    // and make sure you have a 'map.json' file in the same folder.
+    // var spec2 = "map.json";
+    // vegaEmbed('#map_vis_div', spec2, {"actions": false}).catch(console.error);
+  </script>
+
+</body>
+</html>
