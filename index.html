@@ -11,7 +11,7 @@
   
   <style>
     body {
-      font-family: sans-serif;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
       line-height: 1.6;
       background-color: #f4f4f4;
       color: #333;
@@ -22,24 +22,29 @@
       max-width: 900px;
       margin: auto;
       background: #fff;
-      padding: 20px;
+      padding: 20px 40px;
       border-radius: 8px;
-      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+      box-shadow: 0 0 15px rgba(0,0,0,0.1);
     }
     h1, h2 {
       color: #0056b3;
+      border-bottom: 2px solid #eeeeee;
+      padding-bottom: 10px;
     }
     .vis-container {
       width: 100%;
       margin-bottom: 40px;
+    }
+    p {
+        color: #555;
     }
   </style>
 </head>
 
 <body>
   <div class="container">
-    <h1>Data Visualisation Portfolio</h1>
-    <p>This page hosts the visualisations for my FIT3179 homework.</p>
+    <h1>Social Media Addiction Visualisation Portfolio</h1>
+    <p>This page hosts the visualisations for my FIT3179 homework, exploring a dataset on social media addiction among students.</p>
 
     <hr>
 
@@ -49,20 +54,20 @@
     
     <hr>
     
-    <h2>Placeholder for Week 9 Visualisation (Map)</h2>
-    <p>This section is reserved for the map visualisation created in the Week 9 homework.</p>
-    </div>
+    <h2>Addiction Levels Across Education and Gender</h2>
+    <p>This grouped bar chart compares the average self-reported addiction score across different academic levels, with a breakdown by gender.</p>
+    <div id="barchart_vis_div" class="vis-container"></div>
+  </div>
 
 
   <script type="text/javascript">
-    // Embed the first visualisation
+    // Embed the first visualisation (bubble chart)
     var spec1 = "addiction_vis.json";
     vegaEmbed('#addiction_vis_div', spec1, {"actions": false}).catch(console.error);
     
-    // To embed your second visualisation, uncomment the lines below
-    // and make sure you have a 'map.json' file in the same folder.
-    // var spec2 = "map.json";
-    // vegaEmbed('#map_vis_div', spec2, {"actions": false}).catch(console.error);
+    // Embed the second visualisation (bar chart)
+    var spec2 = "barchart_vis.json";
+    vegaEmbed('#barchart_vis_div', spec2, {"actions": false}).catch(console.error);
   </script>
 
 </body>

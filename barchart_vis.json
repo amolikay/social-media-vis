@@ -1,0 +1,49 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "title": "Average Addiction Score by Academic Level and Gender",
+  "data": {"url": "addiction_data.csv"},
+  "width": "container",
+  "mark": "bar",
+  "encoding": {
+    "x": {
+      "field": "Academic_Level",
+      "type": "ordinal",
+      "title": "Academic Level",
+      "axis": {"labelAngle": 0},
+      "sort": ["High School", "Undergraduate", "Graduate"]
+    },
+    "y": {
+      "aggregate": "mean",
+      "field": "Addicted_Score",
+      "type": "quantitative",
+      "title": "Average Addicted Score (1-10)"
+    },
+    "xOffset": {
+      "field": "Gender",
+      "type": "nominal"
+    },
+    "color": {
+      "field": "Gender",
+      "type": "nominal",
+      "title": "Gender",
+       "scale": {
+         "domain": ["Male", "Female", "Other"],
+         "range": ["#1f77b4", "#ff7f0e", "#2ca02c"]
+        }
+    },
+    "tooltip": [
+      {"field": "Gender", "title": "Gender"},
+      {"field": "Academic_Level", "title": "Academic Level"},
+      {
+        "aggregate": "mean",
+        "field": "Addicted_Score",
+        "title": "Avg. Addicted Score",
+        "format": ".2f"
+      }
+    ]
+  },
+  "config": {
+    "view": {"stroke": "transparent"},
+    "axis": {"domainWidth": 1}
+  }
+}
