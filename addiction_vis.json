@@ -12,7 +12,7 @@
       "bind": {
         "input": "select",
         "options": [
-          null,
+          {"label": "All Platforms", "value": null},
           "Facebook",
           "Instagram",
           "TikTok",
